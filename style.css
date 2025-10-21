@@ -1,0 +1,25 @@
+.button {
+  color: white; /* Text color */
+  padding: 10px 20px; /* Space inside the button */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline from link */
+  display: inline-block; /* Allows padding and margin */
+  font-weight: bold; /* Make text bold */
+  text-align: center; /* Center the text */
+}
+
+/* Github button color and hover color */
+.Github {
+  background-color: #333;
+}
+.Github:hover {
+  background-color: #000;
+}
+
+/* Linkedin button color and hover color */
+.Linkedin {
+  background-color: #0a66c2;
+}
+.Linkedin:hover {
+  background-color: #084a94;
+}
