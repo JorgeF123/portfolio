@@ -69,6 +69,7 @@ nav .right a span {
   align-items: center;
   padding: 0 50px;
   margin: 50px 0;
+  margin-bottom: 100px;
   gap: 40px;
 }
 
@@ -117,7 +118,36 @@ nav .right a span {
 
 .hero-section .headshot{
   flex: 2;
+  display: flex;
+  justify-content: right;
   
+}
+
+.hero-section .headshot img{
+  border-radius: 50%;
+  width: 350px;
+  
+}
+@media(max-width: 850px) {
+  /* section 1 hero */
+
+  .hero-section .text h2{
+    font-size: 35px;
+  }
+
+}
+
+@media(max-width: 740px) {
+  /* section 1 hero */
+
+  .hero-section{
+    flex-direction: column-reverse;
+  }
+
+  .hero-section .headshot img{
+    width: 300px;
+  }
+
 }
 
 @media(max-width: 600px) {
@@ -138,6 +168,17 @@ nav .right a span {
   }
   nav .right a span{
   display: none;
+  }
+
+  /* section 1 hero */
+
+  .hero-section{
+    padding: 0 20px;
+
+  }
+
+  .hero-section .text h2{
+    font-size: 30px;
   }
   
 }
