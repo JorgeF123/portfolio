@@ -1,46 +1,103 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewpoint" content="width=device-width, initial-scale = 1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <title>Portfolio | Jorge Flores</title>
 </head>
 
-
-
 <body>
-    <header> 
-       <img class="logo" src="images/Bullet.png" alt="logo">
+     <!-- navbar -->
+    <header>
         <nav>
-            <ul class ="nav_links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
+            <div class="left">
+                <a href="/">Jorge Flores</a>
+            </div>
+
+            <div class="right"> 
+                <a href="https://github.com/JorgeF123" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    <span>Github</span>
+                </a>
+
+                <a href="https://linkedin.com/in/jorge-flores-53432334b" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-square-linkedin"></i>
+                    <span>Linkedin</span>
+                </a>
+
+                <a href="mailto:jorgefloresramirez01@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
         </nav>
-         <a 
-        href="https://www.linkedin.com/in/jorge-flores-53432334b" class="button Contact"
-        target="_blank">Contact
-        </a>
     </header>
 
-    <h1>Hi, Im <span class="highlight">Jorge Flores</span></h1>
-    <h2>sophomore cs student</h2>
-    <p> Computer Science student exploring different 
-        areas of software development from building interactive simulations 
-        and games to experimenting with AI and data-driven tools.</p>
+    <main> 
+        <!-- section 1 hero -->
+        <section class="hero-section">
+            <div class="text">
+                <h2>Hi, Im Jorge Flores</h2>
+                <h3>Sophomore CS Student</h3>
+                <p>
+                    Computer Science student exploring different 
+                    areas of software development from building 
+                    interactive simulations and games to 
+                    experimenting with AI and data-driven tools.
+                </p>
+                <div class="links">
+                    <a href="#skills">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Skills</span>
+                    </a>
+
+                    <a href="#testimony">
+                        <i class="fa-solid fa-pen"></i>
+                        <span>Testimony</span>
+                    </a>
+
+                    <a href="#contact">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+
+
+                </div>
+            </div>
+            
+            <div class="headshot"></div>
+        </section>
+
+
+        <!-- section 2 skills -->
+        <section id="skills"> </section>
+
+        <!-- section 3 testimony -->
+        <section id="testimony"> </section>
+
+        <!-- section 4 contact -->
+        <section id="contact"> </section>
+    </main>
     
-    <a 
-        href="https://www.linkedin.com/in/jorge-flores-53432334b" class="button Linkedin"
-        target="_blank">Linkedin
-    </a>
-
-    <a 
-        href="https://github.com/JorgeF123" class="button Github"
-        target="_blank">Github
-    </a>
-
 
 </body>
+
 </html>
