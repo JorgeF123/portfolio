@@ -190,6 +190,8 @@ nav .right a span {
   font-size: 18px;
 
 }
+
+
 /* section 3 projects */
 .Projects-section{
   padding: 0 50px;
@@ -252,6 +254,15 @@ nav .right a span {
 
   .hero-section .headshot img{
     width: 300px;
+  }
+
+  /* section 3 projects */
+  .Projects-section{
+    text-align: center;
+  }
+
+  .Projects-section .group{
+    flex-direction: column;
   }
 
 }
