@@ -126,6 +126,11 @@ nav .right a span {
 .hero-section .headshot img{
   border-radius: 50%;
   width: 350px;
+  box-shadow:
+    0 0 15px #838181,
+    0 0 35px rgba(255,255,255,0.8),
+    0 0 60px rgba(255,255,255,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   
 }
 
@@ -147,6 +152,11 @@ nav .right a span {
   font-size: 20px;
 
 }
+
+.text strong {
+  color: var(--header-color); 
+}
+
 
 .skills-section .cells{
   display: flex;
@@ -179,6 +189,43 @@ nav .right a span {
 .skills-section .cells .cell span{
   font-size: 18px;
 
+}
+/* section 3 projects */
+.Projects-section{
+  padding: 0 50px;
+  margin-bottom: 100px;
+}
+
+.Projects-section h2{
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+
+.Projects-section h3{
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.Projects-section .group{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.Projects-section .group .project-details{
+  text-align: center;
+  flex: 2;
+}
+
+.Projects-section .group .project-details img{
+  width: 300px;
+  aspect-ratio: 1 /1;
+  object-fit: cover;
+  border-radius: 4%;
+}
+
+.Projects-section .group .text{
+  flex: 8;
 }
 
 @media(max-width: 740px) {
