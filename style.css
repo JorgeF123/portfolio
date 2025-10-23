@@ -224,6 +224,21 @@ nav .right a span {
   border-radius: 4%;
 }
 
+.Projects-section .text p{
+  margin-bottom: 40px;
+  font-size: 19px;
+  
+}
+
+.Projects-section .group {
+  border-bottom: 1px solid var(--header-color); 
+  margin-bottom: 40px;
+}
+
+.Projects-section .group:last-child {
+  border-bottom: none; 
+}
+
 .Projects-section .group .text{
   flex: 8;
 }
