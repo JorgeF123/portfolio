@@ -5,6 +5,13 @@
   --header-color: #838181;
 }
 
+:root[data-theme="dark"] {
+  --background-color: #0f1115;
+  --text-color: #eaeaea;
+  --link-color: #7aa2ff;
+  --header-color: #1b1f2a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,6 +25,11 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--background-color);
+  color: var(--text-color); /* <-- add this */
+}
+
+html, body, header, nav, .project-card, .skills-section .cells .cell {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 a {
@@ -51,15 +63,23 @@ nav .right a {
 }
 
 nav .right a:last-child {
-  color: var(--background-color);
-  background-color: var(--text-color);
+  color: var(--text-color);
+  background-color: var(--header-color);
   padding: 5px 15px;
-  border-radius: 5px;
+  border-radius: 1px;
 }
 
 nav .right a span {
   margin-left: 5px;
 }
+
+nav .right a:hover {
+  color: var(--hover-accent);
+  border-bottom: 2px solid var(--hover-accent);
+  padding-bottom: 2px;
+}
+
+
 
 
 /* section 1 hero */
@@ -115,7 +135,6 @@ nav .right a span {
   border: 2px solid var(--text-color);
 }
 
-
 .hero-section .headshot{
   flex: 2;
   display: flex;
@@ -141,6 +160,19 @@ nav .right a span {
 
 }
 
+.skills-card {
+  background-color: var(--background-color);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0;              /* removes rounded corners if you want edge-to-edge */
+  padding: 80px 80px;            /* more breathing room inside */
+  width: 100vw;                  /* makes it span the full viewport width */
+  margin-left: calc(-50vw + 50%);/* cancels section padding so it actually touches edges */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
 .skills-section h2{
   text-align: center;
   font-size: 35px;
@@ -163,12 +195,6 @@ nav .right a span {
   justify-content: center;
   flex-wrap: wrap;
 
-}
-
-.skills-section .cells .cell:hover {
-  transform: translateY(-5px);
-  border-color: var(--header-color);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .skills-section .cells .cell{
@@ -198,6 +224,27 @@ nav .right a span {
 
 }
 
+.skills-section .cells .cell:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--header-accent);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+:root[data-theme="dark"] .skills-card {
+  background-color: rgba(20,20,25,0.85);
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+:root[data-theme="dark"] .skills-section .cells .cell:hover {
+  box-shadow: 0 0 14px rgba(122,162,255,0.35);
+}
+
+:root[data-theme="dark"] .skills-section .cells .cell {
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* ========== SECTION DIVIDER ========== */
 .section-divider {
   width: 80%;
   height: 2px;
@@ -207,6 +254,12 @@ nav .right a span {
   opacity: 0.6;
   border-radius: 10px;
 }
+
+:root[data-theme="dark"] .section-divider {
+  background: linear-gradient(20deg, transparent, var(--hover-accent), transparent);
+  opacity: 0.8;
+}
+
 /*============section 3 projects============*/
 .Projects-section {
   padding: 50px 10%;
@@ -223,8 +276,6 @@ nav .right a span {
   position: relative;
 }
 
-
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -238,12 +289,6 @@ nav .right a span {
   padding: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  border-color: var(--header-color);
 }
 
 .project-card img {
@@ -265,6 +310,33 @@ nav .right a span {
   color: var(--text-color);
 }
 
+.project-card:hover {
+  border-color: var(--header-accent);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+}
+
+:root[data-theme="dark"] .project-card:hover {
+  border-color: var(--header-accent);
+  box-shadow: 0 0 16px rgba(122,162,255,0.35);
+}
+
+:root[data-theme="dark"] .project-card {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* ========== PARTICLE BACKGROUND ========== */
+#bg-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+header, main, section, footer {
+  position: relative;
+  z-index: 1;
+}
 
 @media(max-width: 740px) {
   /* section 1 hero */
@@ -287,6 +359,9 @@ nav .right a span {
   }
 
 }
+/* 1) Define a hover accent that adapts by theme */
+:root { --hover-accent: #4a76ee; }                  /* light */
+:root[data-theme="dark"] { --hover-accent: #7aa2ff; } /* dark */
 
 @media(max-width: 850px) {
   /* section 1 hero */
