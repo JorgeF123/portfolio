@@ -191,59 +191,73 @@ nav .right a span {
 
 }
 
-
-/* section 3 projects */
-.Projects-section{
-  padding: 0 50px;
+.section-divider {
+  width: 80%;
+  height: 2px;
+  margin: 80px auto;
+  border: none;
+  background: linear-gradient(20deg, transparent, var(--header-color), transparent);
+  opacity: 0.6;
+  border-radius: 10px;
+}
+/*============section 3 projects============*/
+.Projects-section {
+  padding: 50px 10%;
   margin-bottom: 100px;
+  background-color: var(--background-color)
+ 
 }
 
-.Projects-section h2{
+.Projects-section h2 {
   font-size: 45px;
-  margin-bottom: 30px;
-}
-
-.Projects-section h3{
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.Projects-section .group{
-  display: flex;
-  align-items: center;
-  gap: 50px;
-}
-
-.Projects-section .group .project-details{
+  margin-bottom: 40px;
   text-align: center;
-  flex: 2;
+  color: var(--text-color);
+  position: relative;
 }
 
-.Projects-section .group .project-details img{
-  width: 300px;
-  aspect-ratio: 1 /1;
-  object-fit: cover;
-  border-radius: 4%;
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
 }
 
-.Projects-section .text p{
-  margin-bottom: 40px;
-  font-size: 19px;
-  
+.project-card {
+  background: var(--background-color); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
 
-.Projects-section .group {
-  border-bottom: 1px solid var(--header-color); 
-  margin-bottom: 40px;
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  border-color: var(--header-color);
 }
 
-.Projects-section .group:last-child {
-  border-bottom: none; 
+.project-card img {
+  width: 50%;  
+  margin: 0 auto 15px;
+  display: block;
+  border-radius: 10px;
 }
 
-.Projects-section .group .text{
-  flex: 8;
+.project-card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--text-color);
 }
+
+.project-card p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
 
 @media(max-width: 740px) {
   /* section 1 hero */
