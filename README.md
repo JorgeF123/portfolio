@@ -16,7 +16,7 @@ This website is designed to showcase my **projects**, **skills**, and **story** 
 
 ---
 
-## 🧠 Technologies Used
+## Technologies Used
 
 - **HTML5** – semantic structure and clean markup  
 - **CSS3** – custom styling, colors, and responsive layout  
@@ -25,7 +25,7 @@ This website is designed to showcase my **projects**, **skills**, and **story** 
 
 ---
 
-## 🧩 Sections Overview
+## Sections Overview
 
 | Section | Description |
 |----------|-------------|
@@ -37,7 +37,7 @@ This website is designed to showcase my **projects**, **skills**, and **story** 
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 To preview locally:
 
