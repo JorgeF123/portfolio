@@ -1,10 +1,10 @@
-// Create + mount the canvas ABOVE the body background, BELOW content
+
 const canvas = document.createElement('canvas');
 canvas.id = 'bg-particles';
-document.body.prepend(canvas);            // important: prepend, not append
+document.body.prepend(canvas);            
 const ctx = canvas.getContext('2d');
 
-// Use your CSS var (--header-color) for particle color
+
 const rootStyles = getComputedStyle(document.documentElement);
 const accent = rootStyles.getPropertyValue('--header-color').trim();
 function hexToRgba(hex, a=1) {
@@ -42,7 +42,7 @@ let particles = Array.from({ length: 80 }, () => ({
 
 function animate() {
   ctx.clearRect(0, 0, W(), H());
-  ctx.fillStyle = hexToRgba(accent || '#ffffff', 0.9); // uses your --header-color
+  ctx.fillStyle = hexToRgba(accent || '#ffffff', 0.9); 
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -57,26 +57,25 @@ function animate() {
 animate();
 
 
-// ---- Theme toggle with memory + icon swap ----
+
 const STORAGE_KEY = 'theme';
 const btn = document.querySelector('.theme-toggle');
 
-// 1) Load saved theme or system preference
+
 const saved = localStorage.getItem(STORAGE_KEY);
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const initial = saved || (prefersDark ? 'dark' : 'light');
 document.documentElement.dataset.theme = initial;
 
-// 2) Update button icon
+
 function setIcon(theme) {
-  // show moon when in light (click to go dark), sun when in dark (click to go light)
   btn.innerHTML = theme === 'dark'
   ? '<i class="fa-regular fa-sun"></i>'
   : '<i class="fa-regular fa-moon"></i>';
 }
 setIcon(initial);
 
-// 3) Toggle on click + persist
+
 btn.addEventListener('click', () => {
   const current = document.documentElement.dataset.theme;
   const next = current === 'dark' ? 'light' : 'dark';
