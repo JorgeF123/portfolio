@@ -86,18 +86,16 @@ nav .right a:hover {
   display: flex;
   justify-self: space-between;
   align-items: center;
-  padding: 0 50px;
+  padding: 10px 50px;
   margin: 50px 0;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
+  margin-top: 200px;
   gap: 40px;
+  background-color: var(--background-color);
 }
 
 .hero-section .text{
   flex: 5;
-  background-color: var(--background-color);
-  padding: 20px;
-
-  
 }
 
 .hero-section .text h2{
@@ -157,7 +155,7 @@ nav .right a:hover {
 
 /* section 2 skills */
 .skills-section {
-  padding: 0 50px;
+  padding: 0px 50px;
   margin-bottom: 100px;
 
 }
@@ -166,7 +164,7 @@ nav .right a:hover {
   background-color: var(--background-color);
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 0;              
-  padding: 80px 80px;            
+  padding: 100px 100px;            
   width: 100vw;                  
   margin-left: calc(-50vw + 50%);
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
@@ -356,6 +354,22 @@ nav .right a:hover {
   color: rgb(114, 113, 116); 
 }
 
+/* ========== transition ========== */
+.Projects-section, .skills-card { 
+  opacity: 0;
+  transform: translateY(100px) scale(0.9); 
+  filter: blur(4px);                       
+  transition: 
+    opacity 0.7s ease-out, 
+    transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), 
+    filter 0.7s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
 
 /* ========== PARTICLE BACKGROUND ========== */
 #bg-particles {
@@ -444,3 +458,6 @@ header, main, section, footer {
   }
   
 }
+
+
+

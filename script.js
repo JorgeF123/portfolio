@@ -87,3 +87,23 @@ btn.addEventListener('click', () => {
 
 
 
+const text = "Hi, I'm Jorge Flores";
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    document.querySelector('.hero-section h2').textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 80);
+  }
+}
+typeWriter();
+
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+});
+document.querySelectorAll('.skills-card, .Projects-section').forEach(el => observer.observe(el));
+
+
