@@ -3,6 +3,7 @@
   --link-color: #4a76ee;
   --background-color: #eeeff1;
   --header-color: #838181;
+  --hover-accent: #4a76ee;
 }
 
 :root[data-theme="dark"] {
@@ -10,6 +11,7 @@
   --text-color: #eaeaea;
   --link-color: #7aa2ff;
   --header-color: #1b1f2a;
+  --hover-accent: #7aa2ff;
 }
 
 * {
@@ -25,7 +27,7 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--background-color);
-  color: var(--text-color); /* <-- add this */
+  color: var(--text-color); 
 }
 
 html, body, header, nav, .project-card, .skills-section .cells .cell {
@@ -92,6 +94,9 @@ nav .right a:hover {
 
 .hero-section .text{
   flex: 5;
+  background-color: var(--background-color);
+  padding: 20px;
+
   
 }
 
@@ -160,10 +165,10 @@ nav .right a:hover {
 .skills-card {
   background-color: var(--background-color);
   border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 0;              /* removes rounded corners if you want edge-to-edge */
-  padding: 80px 80px;            /* more breathing room inside */
-  width: 100vw;                  /* makes it span the full viewport width */
-  margin-left: calc(-50vw + 50%);/* cancels section padding so it actually touches edges */
+  border-radius: 0;              
+  padding: 80px 80px;            
+  width: 100vw;                  
+  margin-left: calc(-50vw + 50%);
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   position: relative;
   z-index: 2;
@@ -186,7 +191,6 @@ nav .right a:hover {
   color: var(--header-color); 
 }
 
-
 .skills-section .cells{
   display: flex;
   justify-content: center;
@@ -195,7 +199,7 @@ nav .right a:hover {
 }
 
 .skills-section .cells .cell{
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -298,31 +302,23 @@ nav .right a:hover {
 .project-card h3 {
   font-size: 24px;
   margin: 0 0 10px;          
-  color: var(--text-color);
   font-weight: 700;
   letter-spacing: 0.2px;
 }
 
 .project-card a {
-  display: block;           
+  display: inline-flex;
   font-size: 18px;           
   margin: 0 0 14px;          
-  font-weight: 600;
-  text-decoration: none;     
+  font-weight: 600;    
   border-bottom: 1px solid transparent;
   transition: color .15s ease, border-bottom-color .15s ease, transform .15s ease;
   width: fit-content;        
 }
 
-.project-card a:hover {
-  color: var(--hover-accent);
-  border-bottom-color: var(--header-accent); 
-  transform: translateY(-1px);              
-}
 .project-card p {
   font-size: 16.5px;
   line-height: 1.6;
-  color: var(--text-color);
   margin: 0;                 
 }
 
@@ -341,26 +337,26 @@ nav .right a:hover {
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
-
 :root[data-theme="dark"] .project-card a {
   color: rgb(149, 148, 148); 
   border-bottom: 1px solid transparent;
   transition: border-bottom-color 0.3s ease; 
 }
 
-/* dark mode link hover — underline only */
 [data-theme="dark"] .project-card a:hover {
   border-bottom-color: var(--hover-accent) !important;
-  color: inherit !important; /* keep text color unchanged */
+  color: inherit !important; 
 }
 
 :root:not([data-theme="dark"]) .project-card a:hover {
   border-bottom-color: var(--hover-accent) !important;
-  color: inherit !important; /* keep text color unchanged */
+  color: inherit !important; 
 }
 :root:not([data-theme="dark"]) .project-card a {
-  color: rgb(114, 113, 116); /* pick any color you want for light mode */
+  color: rgb(114, 113, 116); 
 }
+
+
 /* ========== PARTICLE BACKGROUND ========== */
 #bg-particles {
   position: fixed;
@@ -395,9 +391,7 @@ header, main, section, footer {
   }
 
 }
-/* 1) Define a hover accent that adapts by theme */
-:root { --hover-accent: #4a76ee; }                  /* light */
-:root[data-theme="dark"] { --hover-accent: #7aa2ff; } /* dark */
+
 
 @media(max-width: 850px) {
   /* section 1 hero */
@@ -440,10 +434,6 @@ header, main, section, footer {
   }
 
   /* section 2 skills */
-
-  .skills-section {
-    padding: 0 20px;
-  }
 
   .skills-section {
     padding: 0 20px;
