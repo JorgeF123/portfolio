@@ -297,14 +297,33 @@ nav .right a:hover {
 
 .project-card h3 {
   font-size: 24px;
-  margin-bottom: 15px;
+  margin: 0 0 10px;          
   color: var(--text-color);
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
+.project-card a {
+  display: block;           
+  font-size: 18px;           
+  margin: 0 0 14px;          
+  font-weight: 600;
+  text-decoration: none;     
+  border-bottom: 1px solid transparent;
+  transition: color .15s ease, border-bottom-color .15s ease, transform .15s ease;
+  width: fit-content;        
+}
+
+.project-card a:hover {
+  color: var(--hover-accent);
+  border-bottom-color: var(--header-accent); 
+  transform: translateY(-1px);              
+}
 .project-card p {
-  font-size: 17px;
+  font-size: 16.5px;
   line-height: 1.6;
   color: var(--text-color);
+  margin: 0;                 
 }
 
 .project-card:hover {
@@ -322,6 +341,26 @@ nav .right a:hover {
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
+
+:root[data-theme="dark"] .project-card a {
+  color: rgb(149, 148, 148); 
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.3s ease; 
+}
+
+/* dark mode link hover — underline only */
+[data-theme="dark"] .project-card a:hover {
+  border-bottom-color: var(--hover-accent) !important;
+  color: inherit !important; /* keep text color unchanged */
+}
+
+:root:not([data-theme="dark"]) .project-card a:hover {
+  border-bottom-color: var(--hover-accent) !important;
+  color: inherit !important; /* keep text color unchanged */
+}
+:root:not([data-theme="dark"]) .project-card a {
+  color: rgb(114, 113, 116); /* pick any color you want for light mode */
+}
 /* ========== PARTICLE BACKGROUND ========== */
 #bg-particles {
   position: fixed;
