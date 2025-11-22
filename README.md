@@ -5,6 +5,14 @@ This website is designed to showcase my **projects**, **skills**, and **story** 
 
 ---
 
+## Live Demo
+
+Click here to view the live website:  
+**https://jorgef123.github.io/portfolio/**
+
+
+---
+
 ## Features
 
 - **Responsive Design** – clean layout that adapts to desktop and mobile screens  
