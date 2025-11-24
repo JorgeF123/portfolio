@@ -406,6 +406,29 @@ header, main, section, footer {
 
 }
 
+.project-thumb,.project-video {
+  width: 50%;
+  margin: 0 auto 15px;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 1/1; 
+}
+
+.project-video {
+  display: none;
+}
+
+.project-card:hover .project-thumb {
+  display: none;
+}
+
+.project-card:hover .project-video {
+  display: block;
+}
+
+
+
 
 @media(max-width: 850px) {
   /* section 1 hero */

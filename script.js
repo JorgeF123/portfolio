@@ -107,3 +107,17 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.skills-card, .Projects-section').forEach(el => observer.observe(el));
 
 
+// Play project videos on card hover
+document.querySelectorAll('.project-card').forEach(card => {
+  const video = card.querySelector('.project-video');
+  if (!video) return; // Skip cards without videos
+
+  card.addEventListener('mouseenter', () => {
+    video.play();
+  });
+
+  card.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0; // restart from beginning
+  });
+});
