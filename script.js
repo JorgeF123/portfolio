@@ -1,12 +1,13 @@
 
+// Particle system - only visible in dark mode
 const canvas = document.createElement('canvas');
 canvas.id = 'bg-particles';
 document.body.prepend(canvas);            
 const ctx = canvas.getContext('2d');
 
-
 const rootStyles = getComputedStyle(document.documentElement);
 const accent = rootStyles.getPropertyValue('--header-color').trim();
+
 function hexToRgba(hex, a=1) {
   const h = hex.replace('#','');
   const b = h.length === 3
@@ -40,7 +41,12 @@ let particles = Array.from({ length: 80 }, () => ({
   dy: (Math.random() - 0.5) * 0.6
 }));
 
+let animationId = null;
+let isAnimating = false;
+
 function animate() {
+  if (!isAnimating) return;
+  
   ctx.clearRect(0, 0, W(), H());
   ctx.fillStyle = hexToRgba(accent || '#ffffff', 0.9); 
   particles.forEach(p => {
@@ -52,37 +58,59 @@ function animate() {
     if (p.x < 0 || p.x > W()) p.dx *= -1;
     if (p.y < 0 || p.y > H()) p.dy *= -1;
   });
-  requestAnimationFrame(animate);
+  animationId = requestAnimationFrame(animate);
 }
-animate();
+
+function toggleParticles(theme) {
+  if (theme === 'dark') {
+    canvas.style.display = 'block';
+    if (!isAnimating) {
+      isAnimating = true;
+      animate();
+    }
+  } else {
+    canvas.style.display = 'none';
+    if (isAnimating) {
+      isAnimating = false;
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    }
+  }
+}
 
 
 
 const STORAGE_KEY = 'theme';
 const btn = document.querySelector('.theme-toggle');
 
-
 const saved = localStorage.getItem(STORAGE_KEY);
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const initial = saved || (prefersDark ? 'dark' : 'light');
 document.documentElement.dataset.theme = initial;
 
+// Initialize particles based on initial theme
+toggleParticles(initial);
 
 function setIcon(theme) {
-  btn.innerHTML = theme === 'dark'
-  ? '<i class="fa-regular fa-sun"></i>'
-  : '<i class="fa-regular fa-moon"></i>';
+  if (btn) {
+    btn.innerHTML = theme === 'dark'
+      ? '<i class="fa-regular fa-sun"></i>'
+      : '<i class="fa-regular fa-moon"></i>';
+  }
 }
 setIcon(initial);
 
-
-btn.addEventListener('click', () => {
-  const current = document.documentElement.dataset.theme;
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
-  localStorage.setItem(STORAGE_KEY, next);
-  setIcon(next);
-});
+if (btn) {
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme;
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem(STORAGE_KEY, next);
+    setIcon(next);
+    toggleParticles(next);
+  });
+}
 
 
 
