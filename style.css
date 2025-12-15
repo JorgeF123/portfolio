@@ -1,9 +1,9 @@
 :root {
-  --text-color: #1a1c20;
-  --link-color: #4a76ee;
-  --background-color: #eeeff1;
-  --header-color: #838181;
-  --hover-accent: #4a76ee;
+  --text-color: #1e293b;
+  --link-color: #3b82f6;
+  --background-color: #ffffff;
+  --header-color: #f1f5f9;
+  --hover-accent: #2563eb;
 }
 
 :root[data-theme="dark"] {
@@ -408,6 +408,13 @@ nav .right a:hover {
 
 /* ========== PARTICLE BACKGROUND ========== */
 #bg-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#bg-light-network {
   position: fixed;
   inset: 0;
   z-index: 0;

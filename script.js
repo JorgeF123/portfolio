@@ -79,6 +79,101 @@ function toggleParticles(theme) {
   }
 }
 
+// Connected Nodes Network - only visible in light mode
+const lightCanvas = document.createElement('canvas');
+lightCanvas.id = 'bg-light-network';
+document.body.prepend(lightCanvas);
+const lightCtx = lightCanvas.getContext('2d');
+
+function resizeLight() {
+  const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  lightCanvas.style.width = window.innerWidth + 'px';
+  lightCanvas.style.height = window.innerHeight + 'px';
+  lightCanvas.width = Math.floor(window.innerWidth * dpr);
+  lightCanvas.height = Math.floor(window.innerHeight * dpr);
+  lightCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resizeLight();
+window.addEventListener('resize', resizeLight);
+
+const LIGHT_W = () => window.innerWidth;
+const LIGHT_H = () => window.innerHeight;
+
+let lightNodes = Array.from({ length: 50 }, () => ({
+  x: Math.random() * LIGHT_W(),
+  y: Math.random() * LIGHT_H(),
+  vx: (Math.random() - 0.5) * 0.5,
+  vy: (Math.random() - 0.5) * 0.5,
+  radius: Math.random() * 2 + 1
+}));
+
+let lightAnimationId = null;
+let isLightAnimating = false;
+const CONNECTION_DISTANCE = 150;
+
+function animateLight() {
+  if (!isLightAnimating) return;
+  
+  lightCtx.clearRect(0, 0, LIGHT_W(), LIGHT_H());
+  
+  // Draw connections between nearby nodes
+  lightCtx.strokeStyle = 'rgba(59, 130, 246, 0.15)';
+  lightCtx.lineWidth = 0.5;
+  
+  for (let i = 0; i < lightNodes.length; i++) {
+    for (let j = i + 1; j < lightNodes.length; j++) {
+      const dx = lightNodes[i].x - lightNodes[j].x;
+      const dy = lightNodes[i].y - lightNodes[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (dist < CONNECTION_DISTANCE) {
+        const opacity = 1 - (dist / CONNECTION_DISTANCE);
+        lightCtx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.2})`;
+        lightCtx.beginPath();
+        lightCtx.moveTo(lightNodes[i].x, lightNodes[i].y);
+        lightCtx.lineTo(lightNodes[j].x, lightNodes[j].y);
+        lightCtx.stroke();
+      }
+    }
+  }
+  
+  // Draw nodes
+  lightCtx.fillStyle = 'rgba(59, 130, 246, 0.4)';
+  lightNodes.forEach(node => {
+    lightCtx.beginPath();
+    lightCtx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+    lightCtx.fill();
+    
+    // Update position
+    node.x += node.vx;
+    node.y += node.vy;
+    
+    // Bounce off edges
+    if (node.x < 0 || node.x > LIGHT_W()) node.vx *= -1;
+    if (node.y < 0 || node.y > LIGHT_H()) node.vy *= -1;
+  });
+  
+  lightAnimationId = requestAnimationFrame(animateLight);
+}
+
+function toggleLightNetwork(theme) {
+  if (theme === 'light') {
+    lightCanvas.style.display = 'block';
+    if (!isLightAnimating) {
+      isLightAnimating = true;
+      animateLight();
+    }
+  } else {
+    lightCanvas.style.display = 'none';
+    if (isLightAnimating) {
+      isLightAnimating = false;
+      if (lightAnimationId) {
+        cancelAnimationFrame(lightAnimationId);
+      }
+    }
+  }
+}
+
 
 
 const STORAGE_KEY = 'theme';
@@ -89,8 +184,9 @@ const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const initial = saved || (prefersDark ? 'dark' : 'light');
 document.documentElement.dataset.theme = initial;
 
-// Initialize particles based on initial theme
+// Initialize particles and light network based on initial theme
 toggleParticles(initial);
+toggleLightNetwork(initial);
 
 function setIcon(theme) {
   if (btn) {
@@ -109,6 +205,7 @@ if (btn) {
     localStorage.setItem(STORAGE_KEY, next);
     setIcon(next);
     toggleParticles(next);
+    toggleLightNetwork(next);
   });
 }
 
