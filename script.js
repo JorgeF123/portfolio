@@ -104,7 +104,7 @@ const observer = new IntersectionObserver(entries => {
     if (entry.isIntersecting) entry.target.classList.add('show');
   });
 });
-document.querySelectorAll('.skills-card, .Projects-section').forEach(el => observer.observe(el));
+document.querySelectorAll('.skills-card, .projects-section').forEach(el => observer.observe(el));
 
 
 // Play project videos on card hover
