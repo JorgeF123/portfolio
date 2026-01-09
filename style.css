@@ -48,27 +48,50 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
 
   padding: 0 50px;
   height: 80px;
+  min-width: 0;
+}
+
+nav .left {
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 nav .left a {
   color: var(--text-color);
   font-size: 22px;
-  font-weight:500;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+nav .right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 nav .right a {
   color: var(--text-color);
-  margin: 0 10px;
+  margin: 0 5px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-nav .right a:last-child {
+nav .right a.theme-toggle {
   color: var(--text-color);
   background-color: var(--header-color);
   padding: 5px 15px;
   border-radius: 1px;
+  flex-shrink: 0;
+  min-width: fit-content;
 }
 
 nav .right a span {
@@ -489,26 +512,60 @@ header, main, section, footer {
     font-size: 35px;
   }
 
+  /* NAVBAR */
+  nav {
+    padding: 0 30px;
+    gap: 8px;
+  }
+
+  nav .right {
+    gap: 4px;
+  }
+
+  nav .right a {
+    margin: 0 4px;
+    font-size: 20px;
+  }
+
+  nav .right a.theme-toggle {
+    padding: 5px 12px;
+  }
 }
 
 @media(max-width: 600px) {
   /* NAVBAR */
   nav {
-    padding: 0 20px
+    padding: 0 20px;
+    gap: 5px;
+  }
+
+  nav .left a {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  nav .right {
+    gap: 3px;
+    flex-shrink: 1;
   }
 
   nav .right a {
-  font-size: 22px;
+    font-size: 18px;
+    margin: 0 3px;
   }
 
-  nav .right a:last-child {
-  color: var(--text-color);
-  background-color: transparent;
-  padding: 0;
-  
+  nav .right a.theme-toggle {
+    color: var(--text-color);
+    background-color: transparent;
+    padding: 5px 8px;
+    margin: 0;
+    flex-shrink: 0;
   }
-  nav .right a span{
-  display: none;
+
+  nav .right a span {
+    display: none;
   }
 
   /* section 1 hero */
