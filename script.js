@@ -237,8 +237,36 @@ document.querySelectorAll('.project-card').forEach(card => {
   const video = card.querySelector('.project-video');
   if (!video) return; // Skip cards without videos
 
+  // Preload video when card comes into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.load();
+        observer.unobserve(card);
+      }
+    });
+  }, { rootMargin: '50px' });
+  
+  observer.observe(card);
+
   card.addEventListener('mouseenter', () => {
-    video.play();
+    // Reset and play video
+    video.currentTime = 0;
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Video is playing
+        })
+        .catch(error => {
+          // Autoplay was prevented, try loading first
+          video.load();
+          video.play().catch(err => {
+            console.log('Video play prevented:', err);
+          });
+        });
+    }
   });
 
   card.addEventListener('mouseleave', () => {
