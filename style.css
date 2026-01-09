@@ -189,11 +189,35 @@ nav .right a:hover {
   color: var(--header-color); 
 }
 
+.skills-section .cells-wrapper {
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0;
+}
+
 .skills-section .cells{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
+}
+
+.skills-section .cells-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  animation: scroll-left 30s linear infinite;
+  width: max-content;
+  will-change: transform;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
 }
 
 .skills-section .cells .cell{
@@ -208,6 +232,7 @@ nav .right a:hover {
   border: 1.5px solid #d3d3d3;
   border-radius: 5px;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 
 }
 
@@ -495,6 +520,10 @@ header, main, section, footer {
 
   .skills-section {
     padding: 0 20px;
+  }
+
+  .skills-section .cells .cell {
+    margin: 10px 15px;
   }
 
   .skills-section .cells .cell span{
